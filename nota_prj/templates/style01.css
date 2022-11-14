@@ -99,7 +99,7 @@ div.right {
 
 /* 이부분이 오른쪽 화면의 CSS 부분입니다. 위쪽은 사이드바 CSS랑 화면 분할의 부분이라 건드릴 필요 없음!  */
 #navbar {
-  height: 50px;
+  height: 40px;
   width: 100%;
   background: #262626;
   color: white;
@@ -108,4 +108,10 @@ div.right {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#margin {
+    height: 10px;
+    width: 100%;
+    background: #fff;
 }
