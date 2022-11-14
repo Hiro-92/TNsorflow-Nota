@@ -1,4 +1,15 @@
-.menu {
+.back {
+    display: block;
+    width: 200px;
+    height: 550px;
+    background-color: #000;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.menu item{
     display: block;
     overflow: hidden;
     width: 200px;
@@ -8,12 +19,9 @@
     border-radius: 20px;
     padding: 10px;
     box-sizing: border-box;
+    z-index: 20;
 }
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+
 .menu a{
     display: block;
     height: 50px;
