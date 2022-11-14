@@ -14,29 +14,33 @@
     margin: 0;
     padding: 0;
 }
-.menu a, .menu > label {
+.menu a{
     display: block;
-    height: 25px;
+    height: 50px;
     padding: 8px;
     cursor: pointer;
     color: #fff;
     text-decoration: none;
 }
 
+.name a{
+    display: block;
+    border-radius: 20px;
+}
+
 .menu a:hover {
     color: #000;
 }
-.menu ul li:hover, .menu > label:hover {
+.menu a:hover{
     background-color: #fff;
     color: #000;
     border-radius: 10px;
 }
 .menu div {
-    position: absolute;
-    left: 50px;
+    position: fixed;
+    left: 0px;
     line-height: 1.5;
-    font-size: 1em;
-    font-family: 'Noto Sans KR';
+    font-size: 1.3em;
     padding: 0 0 0 20px;
 }
 
@@ -49,26 +53,15 @@
 }
 
 .menu ::before {
-    font-family: 'Material Icons';
     font-size: 1.5em;
     float: left;
     clear: left;
 }
-.menu label::before{
-    content: '\e5d2';
-    list-style: "Nota.png"}
-.menu li:nth-child(1) a::before{
-    content: '\f02e';
-    list-style-image: url("https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Amap%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048"); }
-.menu li:nth-child(2) a::before{
-    content: '\e8d6';
-    list-style-image: url("https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Aquery_stats%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048"); }
-.menu li:nth-child(3) a::before{
-    content: '\e88a';
-    list-style-image: url("https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Anewspaper%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048"); }
-.menu li:nth-child(4) a::before{
-    content: '\e8cc';
-    list-style-image: url("https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ahelp%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048"); }
+.menu label::before{content: '\e5d2';}
+.menu li:nth-child(1) a::before{content: '\f02e';}
+.menu li:nth-child(2) a::before{content: '\e8d6';}
+.menu li:nth-child(3) a::before{content: '\e88a';}
+.menu li:nth-child(4) a::before{content: '\e8cc';}
 
 /*@media screen and (max-width:1023px) {*/
 /*    .menu {*/
