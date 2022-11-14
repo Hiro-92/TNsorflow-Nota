@@ -13,12 +13,14 @@ try:
 
     # 테이블 생성 sql 정의
     sql = '''
-    CREATE TABLE IF NOT EXISTS `news_2015` (
-    `news_head` text NULL,
-    `news_date` date NULL,
-    `news_img` varchar(2048) NULL,
-    `news_url` varchar(2048) NULL
-    )
+      CREATE TABLE IF NOT EXISTS `news_2015` (
+      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+      `news_head` text NULL,
+      `news_date` date NULL,
+      `news_img` varchar(2048) NULL,
+      `news_url` varchar(2048) NULL,
+      PRIMARY KEY (`id`))
+    ENGINE = InnoDB DEFAULT CHARSET=utf8
     '''
 
     # 테이블 생성
