@@ -73,3 +73,31 @@
         display: none;
     }
 }
+
+div {
+    width: 100%;
+}
+
+div.left {
+    width: 14%;
+    float: left;
+    position: fixed;
+}
+
+div.right {
+    width: 86%;
+    float: right;
+}
+
+/* 이부분이 오른쪽 화면의 CSS 부분입니다. 위쪽은 사이드바 CSS랑 화면 분할의 부분이라 건드릴 필요 없음!  */
+#navbar {
+  height: 50px;
+  width: 100%;
+  background: #262626;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
