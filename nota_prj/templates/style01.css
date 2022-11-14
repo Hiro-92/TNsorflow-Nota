@@ -115,3 +115,13 @@ div.right {
     width: 100%;
     background: #fff;
 }
+
+.left_window {
+    width: 60%;
+    float: left;
+}
+
+.right_window {
+    width: 40%;
+    float: right;
+}
