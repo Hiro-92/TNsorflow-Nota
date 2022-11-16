@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "news",
     "accident",
     "about",
-    # "map",
+    "main",
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NOTA</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<script>
+    var data = [
+    {
+        dead : 8,
+        hurt : 0,
+        location : "충북",
+        type: "측면 충돌",
+        date: "2015년 9월 1일",
+        lat: 37.01841223,
+        lng: 127.823849,
+        img: "https://velog.velcdn.com/images/0902hero/post/0f694d99-9ead-4dc5-a269-ccf864eee086/image.png",
+    },
+    {
+        dead: 5,
+        hurt: 1,
+        location: "전북",
+        type: "정면 충돌",
+        date: "2015년 7월 18일",
+        lat: 35.48218737,
+        lng: 127.5672339,
+        lmg: "https://velog.velcdn.com/images/0902hero/post/d87921f5-3e12-4786-83ca-ac04392ff881/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 1,
+        location: "강원",
+        type: "공작물 충돌",
+        date: "2015년 1월 19일",
+        lat: 37.94567063,
+        lng: 128.0657823,
+        img: "https://velog.velcdn.com/images/0902hero/post/354b2dbc-00bb-451e-bcb0-73192ede9986/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 1,
+        location: "경북",
+        type: "기타",
+        date: "2015년 2월 3일",
+        lat: 36.14454009,
+        lng: 128.3476958,
+        img: "https://velog.velcdn.com/images/0902hero/post/e740cbb7-32d0-46f5-a14e-cc7c80c0f37e/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 1,
+        location: "경기",
+        type:"길 가장 자리 구역 통행중",
+        date: "2015년 3월 24일",
+        lat: 37.19941495,
+        lng: 127.0075919,
+        img: "https://velog.velcdn.com/images/0902hero/post/bd2c59a0-b037-48ee-87be-66d46e1b02fe/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 1,
+        location: "충남",
+        type: "공작물 충돌",
+        date: "2015년 3월 30일",
+        lat: 36.60228605,
+        lng: 126.5467867,
+        img: "https://velog.velcdn.com/images/0902hero/post/4b082b23-672e-49fe-ac78-42042a477174/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 16,
+        location: "경북",
+        type: "측면 충돌",
+        date: "2015년 10월 9일",
+        lat: 36.09700779,
+        lng: 129.4089058,
+        img: "https://velog.velcdn.com/images/0902hero/post/6168f125-a188-429e-ae0f-e1e799f8123b/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 16,
+        location: "경북",
+        type: "측면 충돌",
+        date: "2015년 10월 9일",
+        lat: 36.09700779,
+        lng: 129.4089058,
+        img: "https://velog.velcdn.com/images/0902hero/post/4b082b23-672e-49fe-ac78-42042a477174/image.png",
+    },
+    {
+        dead: 4,
+        hurt: 3,
+        location: "경기",
+        type: "정면 충돌",
+        date: "2015년 12월 12일",
+        lat: 37.60745911,
+        lng: 126.841587,
+        img: "https://velog.velcdn.com/images/0902hero/post/e196bb85-93e2-4138-aef8-ce9c6fade234/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 1,
+        location: "전남",
+        type: "전도 전복",
+        date: "2015년 1월 27일",
+        lat: 35.02083827,
+        lng: 127.5120905,
+        img: "https://velog.velcdn.com/images/0902hero/post/e3d8c146-a498-4963-af2a-d6a584074f54/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 3,
+        location: "전남",
+        type: "공작물 충돌",
+        date: "2015년 4월 19일",
+        lat: 34.77857229,
+        lng: 127.7147177,
+        img: "https://velog.velcdn.com/images/0902hero/post/4b082b23-672e-49fe-ac78-42042a477174/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 9,
+        location: "경남",
+        type: "공작물 충돌",
+        date: "2015년 5월 9일",
+        lat: 35.42887599,
+        lng: 128.625311,
+        img: "https://velog.velcdn.com/images/0902hero/post/4b082b23-672e-49fe-ac78-42042a477174/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 1,
+        location: "경남",
+        type: "추돌",
+        date: "2015년 5월 17일",
+        lat: 34.98457421,
+        lng: 128.0568687,
+        img: "https://velog.velcdn.com/images/0902hero/post/e3d8c146-a498-4963-af2a-d6a584074f54/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 1,
+        location: "전남",
+        type: "기타",
+        date: "2015년 5월 26일",
+        lat: 35.0868971,
+        lng: 127.203023,
+        img: "https://velog.velcdn.com/images/0902hero/post/e3d8c146-a498-4963-af2a-d6a584074f54/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 1,
+        location: "경북",
+        type: "도로 이탈",
+        date: "2015년 6월 30일",
+        lat: 36.53802658,
+        lng: 128.7982034,
+        img: "https://velog.velcdn.com/images/0902hero/post/e3d8c146-a498-4963-af2a-d6a584074f54/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 0,
+        location: "경기",
+        type: "기타",
+        date: "2015년 7월 28일",
+        lat: 37.64068543,
+        lng: 126.7086229,
+        img: "https://velog.velcdn.com/images/0902hero/post/72eb55ed-564f-4454-b4bf-6f65fcb1fdd8/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 6,
+        location: "전북",
+        type: "정면 충돌",
+        date: "2015년 8월 5일",
+        lat: 35.45128858,
+        lng: 126.5037723,
+        img: "https://velog.velcdn.com/images/0902hero/post/393a3a34-ed43-46a5-85ff-5e1ebe43a212/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 3,
+        location: "충남",
+        type: "정면 충돌",
+        date: "2015년 10월 14일",
+        lat: 36.77298791,
+        lng: 126.4415331,
+        img: "https://velog.velcdn.com/images/0902hero/post/0ed16351-98b9-4e65-bb53-69c49f1096ee/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 1,
+        location: "경남",
+        type: "정면 충돌",
+        date: "2015년 10월 17일",
+        lat: 34.92670196,
+        lng: 128.0486819,
+        img: "https://velog.velcdn.com/images/0902hero/post/e3d8c146-a498-4963-af2a-d6a584074f54/image.png",
+    },
+    {
+        dead: 3,
+        hurt: 8,
+        location: "경남",
+        type: "정면 충돌",
+        date: "2015년 11월 30일",
+        lat: 34.94037741,
+        lng: 128.1940209,
+        img: "https://velog.velcdn.com/images/0902hero/post/50f784c6-5d1e-4bef-a9c2-8d81d3e71ae4/image.png",
+    }
+]</script>
+    <style>
+        .back {
+    display: block;
+    width: 200px;
+    height: 545px;
+    background-color: #000;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.menu item{
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    transition: all 0.5s ease;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.menu a{
+    display: block;
+    height: 50px;
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.name a{
+    display: block;
+    border-radius: 20px;
+}
+
+.menu a:hover {
+    color: #000;
+}
+.menu a:hover{
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+.menu div {
+    position: fixed;
+    left: 0px;
+    line-height: 1.5;
+    font-size: 1.3em;
+    padding: 0 0 0 20px;
+}
+
+#expand-menu {
+    display: none;
+}
+#expand-menu:checked ~ ul {
+    display: block;
+    height: auto;
+}
+
+.menu ::before {
+    font-size: 1.5em;
+    float: left;
+    clear: left;
+}
+.menu label::before{content: '\e5d2';}
+.menu li:nth-child(1) a::before{content: '\f02e';}
+.menu li:nth-child(2) a::before{content: '\e8d6';}
+.menu li:nth-child(3) a::before{content: '\e88a';}
+.menu li:nth-child(4) a::before{content: '\e8cc';}
+
+/*@media screen and (max-width:1023px) {*/
+/*    .menu {*/
+/*        width: 60px;*/
+/*    }*/
+/*}*/
+@media screen and (max-width:560px) {
+    .menu #expand-menu:not(:checked) ~ ul {
+        display: none;
+    }
+}
+
+div {
+    width: 100%;
+}
+
+div.left {
+    width: 14%;
+    float: left;
+    position: fixed;
+}
+
+div.right {
+    width: 86%;
+    float: right;
+}
+
+/* 이부분이 오른쪽 화면의 CSS 부분입니다. 위쪽은 사이드바 CSS랑 화면 분할의 부분이라 건드릴 필요 없음!  */
+#navbar {
+  height: 40px;
+  width: 100%;
+  background: #262626;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#margin {
+    height: 10px;
+    width: 100%;
+    background: #fff;
+}
+
+.left_window {
+    width: 60%;
+    float: left;
+}
+
+.right_window {
+    width: 40%;
+    float: right;
+}
+        .infowindow_wrap {
+          position: absolute;
+          top: 100px;
+          width: 400px;
+          z-index: 10000;
+          background-color: white;
+          left: 50px;
+          padding: 15px;
+          border: 1px solid rgba(0,0,0,0.2);
+          border-radius: 4px;
+          text-align: left;
+        }
+
+        .infowindow_left {
+            width: 50%;
+            float: left;
+        }
+
+        .infowindow_right {
+            width: 50%;
+            float: right;
+        }
+        .img {
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=iyyicap180"></script>
+</head>
+<body>
+    <div class="left">
+        <div class="name">
+            <a href="http://127.0.0.1:8000/"><img src="https://velog.velcdn.com/images/0902hero/post/52e1b0fa-dd75-4324-8b9c-7c87af76c4bc/image.png" alt="Nota" title="NoTa" width=200 height=150></a>
+        </div>
+        <div class="back">
+            <div class="menu">
+                <input type="checkbox" id="expand-menu" name="expand-menu">
+                <a href="http://127.0.0.1:8000/" class="item"><div><span class="material-symbols-outlined">map</span>&nbsp; Main Page</div></a>
+                <br>
+                <a href="http://127.0.0.1:8000/graph/year" class="item"><div><span class="material-symbols-outlined">pie_chart</span>&nbsp; Graph</div></a>
+                <br>
+                <a href="http://127.0.0.1:8000/news/" class="item"><div><span class="material-symbols-outlined">newspaper</span>&nbsp; News</div></a>
+                <br>
+                <a href="http://127.0.0.1:8000/about/" class="item"><div><span class="material-symbols-outlined">help</span>&nbsp; About</div></a>
+            </div>
+        </div>
+    </div>
+
+    <!--    이 아래 부분이 오른쪽 화면에 컨텐츠가 들어갈 부분입니다.   -->
+    <!--    div class=right 부분 안쪽의 내용을 수정하면 됨!!    -->
+    <div class="right">
+    <!--    이 아래를 수정하시면 됩니당    -->
+
+  <div id="navbar">Nota Map</div>
+  <div id="map" style="width:100%;height:calc(100vh - 60px);"></div>
+
+  <script>
+  <!-- 지도 중심 위치 띄우기 및 zoom 정도 변경 -->
+  var mapOptions = {
+      center: new naver.maps.LatLng(37.3595704, 127.105399),
+      zoom: 10,
+  };
+  // 지도 가져오기 (naver.maps.Map 코드 사용)
+  var map = new naver.maps.Map("map", mapOptions);
+
+  // marker와 infowindow 생성 후 넣어줄 list 생성
+  var markerList = [];
+  var infowindowList =[];
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data) {
+    var target = data[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_left'>
+                            <div class='infowindow_location'>위치 : ${target.location}</div>
+                            <div class='infowindow_date'>날짜 : ${target.date}</div>
+                            <div class='infowindow_type'>사고 유형 : ${target.type}</div>
+                            <div class='infowindow_dead'>사망자수 : ${target.dead}</div>
+                            <div class='infowindow_hurt'>부상자수 : ${target.hurt}</div>
+                        </div>
+                        <div class="infowindow_right">
+                            <img class="img" src="${target.img}">
+                        </div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+  </script>
+    </div>
+</body>
+</html>
