@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "news",
     "accident",
+    "about",
     # "map",
 ]
 

@@ -21,4 +21,5 @@ urlpatterns = [
     path("news/", include('news.urls')),
     path("graph/", include('accident.urls')),
     # path("", include('map.urls')),
+    path("about/", include('about.urls')),
 ]
