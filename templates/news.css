@@ -1,0 +1,127 @@
+.back {
+    display: block;
+    width: 200px;
+    height: 545px;
+    background-color: #000;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.menu item{
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    transition: all 0.5s ease;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.menu a{
+    display: block;
+    height: 50px;
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.name a{
+    display: block;
+    border-radius: 20px;
+}
+
+.menu a:hover {
+    color: #000;
+}
+.menu a:hover{
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+.menu div {
+    position: fixed;
+    left: 0px;
+    line-height: 1.5;
+    font-size: 1.3em;
+    padding: 0 0 0 20px;
+}
+
+#expand-menu {
+    display: none;
+}
+#expand-menu:checked ~ ul {
+    display: block;
+    height: auto;
+}
+
+.menu ::before {
+    font-size: 1.5em;
+    float: left;
+    clear: left;
+}
+.menu label::before{content: '\e5d2';}
+.menu li:nth-child(1) a::before{content: '\f02e';}
+.menu li:nth-child(2) a::before{content: '\e8d6';}
+.menu li:nth-child(3) a::before{content: '\e88a';}
+.menu li:nth-child(4) a::before{content: '\e8cc';}
+
+/*@media screen and (max-width:1023px) {*/
+/*    .menu {*/
+/*        width: 60px;*/
+/*    }*/
+/*}*/
+@media screen and (max-width:560px) {
+    .menu #expand-menu:not(:checked) ~ ul {
+        display: none;
+    }
+}
+
+div {
+    width: 100%;
+}
+
+div.left {
+    width: 14%;
+    float: left;
+    position: fixed;
+}
+
+div.right {
+    width: 86%;
+    float: right;
+}
+
+/* 이부분이 오른쪽 화면의 CSS 부분입니다. 위쪽은 사이드바 CSS랑 화면 분할의 부분이라 건드릴 필요 없음!  */
+#navbar {
+  height: 40px;
+  width: 100%;
+  background: #262626;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#margin {
+    height: 10px;
+    width: 100%;
+    background: #fff;
+}
+
+.left_window {
+    width: 60%;
+    float: left;
+}
+
+.right_window {
+    width: 40%;
+    float: right;
+}
