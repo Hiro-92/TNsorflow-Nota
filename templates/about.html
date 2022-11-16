@@ -1,12 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>About</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href="news.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<style>
+        .back {
+            display: block;
+            width: 200px;
+            height: 545px;
+            background-color: #000;
+            border-radius: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+
+        .menu item{
+            display: block;
+            overflow: hidden;
+            width: 200px;
+            background-color: #000;
+            color: #fff;
+            transition: all 0.5s ease;
+            border-radius: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            z-index: 20;
+        }
+
+        .menu a{
+            display: block;
+            height: 50px;
+            padding: 8px;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .name a{
+            display: block;
+            border-radius: 20px;
+        }
+
+        .menu a:hover {
+            color: #000;
+        }
+        .menu a:hover{
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+        }
+        .menu div {
+            position: fixed;
+            left: 0px;
+            line-height: 1.5;
+            font-size: 1.3em;
+            padding: 0 0 0 20px;
+        }
+
+        #expand-menu {
+            display: none;
+        }
+        #expand-menu:checked ~ ul {
+            display: block;
+            height: auto;
+        }
+
+        .menu ::before {
+            font-size: 1.5em;
+            float: left;
+            clear: left;
+        }
+        .menu label::before{content: '\e5d2';}
+        .menu li:nth-child(1) a::before{content: '\f02e';}
+        .menu li:nth-child(2) a::before{content: '\e8d6';}
+        .menu li:nth-child(3) a::before{content: '\e88a';}
+        .menu li:nth-child(4) a::before{content: '\e8cc';}
+
+        /*@media screen and (max-width:1023px) {*/
+        /*    .menu {*/
+        /*        width: 60px;*/
+        /*    }*/
+        /*}*/
+        @media screen and (max-width:560px) {
+            .menu #expand-menu:not(:checked) ~ ul {
+                display: none;
+            }
+        }
+
+        div {
+            width: 100%;
+        }
+
+        div.left {
+            width: 14%;
+            float: left;
+            position: fixed;
+        }
+
+        div.right {
+            width: 86%;
+            float: right;
+        }
+
+        /* 이부분이 오른쪽 화면의 CSS 부분입니다. 위쪽은 사이드바 CSS랑 화면 분할의 부분이라 건드릴 필요 없음!  */
+        #navbar {
+            height: 40px;
+            width: 100%;
+            background: #262626;
+            color: white;
+            font-weight: bolder;
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #margin {
+            height: 10px;
+            width: 100%;
+            background: #fff;
+        }
+
+        .left_window {
+            width: 60%;
+            float: left;
+        }
+
+        .right_window {
+            width: 40%;
+            float: right;
+        }
+    </style>
 </head>
 <body>
+<div class="left">
+        <div class="name">
+            <a href="#"><img src="https://velog.velcdn.com/images/0902hero/post/52e1b0fa-dd75-4324-8b9c-7c87af76c4bc/image.png" alt="Nota" title="NoTa" width=200 height=150></a>
+        </div>
+        <div class="back">
+            <div class="menu">
+                <input type="checkbox" id="expand-menu" name="expand-menu">
+                <a href="#" class="item"><div><span class="material-symbols-outlined">map</span>&nbsp; Main Page</div></a>
+                <br>
+                <a href="http://127.0.0.1:8000/graph/year" class="item"><div><span class="material-symbols-outlined">pie_chart</span>&nbsp; Graph</div></a>
+                <br>
+                <a href="http://127.0.0.1:8000/news/" class="item"><div><span class="material-symbols-outlined">newspaper</span>&nbsp; News</div></a>
+                <br>
+                <a href="http://127.0.0.1:8000/about/" class="item"><div><span class="material-symbols-outlined">help</span>&nbsp; About</div></a>
+            </div>
+        </div>
+    </div>
 
+<div style="width: 86%; float: right">
+<div id="navbar">About</div>
+        <div id="margin"></div>
 </body>
 </html>

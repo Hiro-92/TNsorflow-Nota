@@ -156,7 +156,7 @@
 
 <div class="left">
         <div class="name">
-            <a href="#"><img src="https://velog.velcdn.com/images/0902hero/post/5c97a4e8-8366-45cf-803b-23ceacf15356/image.png" alt="Nota" title="NoTa" width=200 height=150></a>
+            <a href="#"><img src="https://velog.velcdn.com/images/0902hero/post/52e1b0fa-dd75-4324-8b9c-7c87af76c4bc/image.png" alt="Nota" title="NoTa" width=200 height=150></a>
         </div>
         <div class="back">
             <div class="menu">
@@ -180,7 +180,7 @@
     <!--    이 아래를 수정하시면 됩니당    -->
 <div id="navbar">News</div>
         <div id="margin"></div>
-    <div class="album py-5 bg-light" style="width: 86%; float: right">
+    <div class="album py-5 " style="width: 95%; float: right">
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
@@ -188,12 +188,12 @@
                     <div class="col">
                         <div class="card shadow-sm">
 
-                            <a href="" onclick="window.open('{{ news.news_url }}')">
+                            <a href="" onclick="window.open('{{ news.news_url }}')" style="width: 375px; height: 280px;">
                                 <img class="bd-placeholder-img card-img-top" src="{{ news.news_img }}"
-                                     style="width:399px; height:225px;" alt="..."/>
+                                     style="width:100%;" alt="..."/>
                             </a>
 
-                            <div class="card-body" style="height: 110px;">
+                            <div class="card-body" style="width: 400px; height: 150px;">
                                 <p class="card-text">{{ news.news_head }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-muted">{{ news.news_date }}</small>
@@ -207,7 +207,7 @@
     </div>
 
 
-    <nav aria-label="Page navigation example" style="width:86%; float: right;">
+    <nav aria-label="Page navigation example" style="width:95%; float: right;">
         <ul class="pagination justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -227,16 +227,7 @@
 
 
 </div>
-{#<div class="container" style="width:86%; float: right;">#}
-{#    <footer class="py-3 my-4" style="width: 86%;">#}
-{#        <ul class="nav justify-content-center border-bottom pb-3 mb-3">#}
-{#            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">MainPage</a></li>#}
-{#            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Chatgraph</a></li>#}
-{#            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">News</a></li>#}
-{#            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>#}
-{#        </ul>#}
-{#        <p class="text-center text-muted">© 2022 T-Nsorflow, Inc</p>#}
-{#    </footer>#}
+
 </div>
 </body>
 </html>

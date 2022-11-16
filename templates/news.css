@@ -87,13 +87,13 @@ div {
 }
 
 div.left {
-    width: 14%;
+    width: 5%;
     float: left;
     position: fixed;
 }
 
 div.right {
-    width: 86%;
+    width: 95%;
     float: right;
 }
 
