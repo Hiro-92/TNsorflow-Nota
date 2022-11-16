@@ -11,6 +11,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style01.css">
+    <style>
+        .infowindow_wrap {
+          position: absolute;
+          top: 100px;
+          z-index: 10000;
+          background-color: white;
+          left: 50px;
+          padding: 15px;
+          border: 1px solid rgba(0,0,0,0.2);
+          border-radius: 4px;
+          text-align: center;
+        }
+
+        .infowindow_date {
+          font-size: 15px;
+          font-weight: bolder;
+        }
+    </style>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wmsgq9n86c"></script>
 </head>
 <body>
@@ -36,92 +54,86 @@
     <!--    div class=right 부분 안쪽의 내용을 수정하면 됨!!    -->
     <div class="right">
     <!--    이 아래를 수정하시면 됩니당    -->
-        <div id="navbar">NOTA MAP</div>
-        <div id="margin"></div>
-        <div id="map" style="width:100%;height:calc(100vh - 60px);"></div>
+        <div id="navbar">MyfirstMap</div>
 
-        <script>
-            // 지도 중심 위치 띄우기 및 확대 정도 변경
-            var mapOptions = {
-              center: new naver.maps.LatLng(37.3595704, 127.105399),
-              zoom: 10
-            };
+  <div id="map" style="width:100%;height:100vh;"></div>
 
-            // 지도 가져오기 (naver.maps.Map 코드를 사용)
-            var map = new naver.maps.Map('map', mapOptions);
+  <script type="text/javascript" src="data.js"></script>
+  <script>
+  <!-- 지도 중심 위치 띄우기 및 zoom 정도 변경 -->
+  var mapOptions = {
+      center: new naver.maps.LatLng(37.3595704, 127.105399),
+      zoom: 7,
+  };
+  // 지도 가져오기 (naver.maps.Map 코드 사용)
+  var map = new naver.maps.Map("map", mapOptions);
 
-            // for문을 돌아 생성된 marker와 infowindow들을 넣어줄 각각의 list 생성
-            var markerList = [];
-            var infowindowList =[];
+  // marker와 infowindow 생성 후 넣어줄 list 생성
+  var markerList = [];
+  var infowindowList =[];
 
-            // for문 안에서 데이터들을 받아와 지도에 마커 띄우기
-            for (var i in data) {
-                var target = data[i];
-                // data셋 안에 들어갈 위도, 경도 값을 받아 마커 띄우기
-                var latlng = new naver.maps.LatLng(target.lat, target.lng);
-                marker = new naver.maps.Marker({
-                    map: map,
-                    position: latlng,
-                });
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data) {
+    var target = data[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
 
-                // infowindow에 들어갈 내용을 담고있는 코드
-                var content = `<div class='infowindow_wrap'>
-                    <div class='left_window'>
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
                         <div class='infowindow_location'>${target.location}</div>
                         <div class='infowindow_date'>${target.date}</div>
                         <div class='infowindow_type'>${target.type}</div>
                         <div class='infowindow_dead'>${target.dead}</div>
                         <div class='infowindow_hurt'>${target.hurt}</div>
-                    </div>
-                    <div class='right_window'>
-                        <div class='infowindow_cloud'>이미지 넣기</div>
-                    </div>
                 </div>`
 
-                // infowindow 화면에 띄우기
-                var infowindow = new naver.maps.InfoWindow({
-                    content: content,
-                    backgroundColor: "#00ff0000",
-                    borderColor: "#00ff0000",
-                    auchorSize: new naver.maps.Size(0,0)
-                })
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
 
-                // for문을 통해 생성된 marker와 infowindow를 각각의 list에 담기
-                markerList.push(marker);
-                infowindowList.puch(infowindow);
-            }
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
 
-            // marker를 클릭하면 infowindow가 열리고 닫히는 코드
-            for (var i=0;ii=markerList.length; i<ii; i++){
-                // 지도 부분을 클릭해도 infowindow가 닫히도록 하는 코드
-                naver.maps.Event.addListener(map, 'click', ClickMap(i));
-                // infowindow가 열려있을 때 marker를 누르면 닫기
-                // infowindow가 닫혀있을 때 marker를 누르면 열기
-                naver.maps.Event.addListener(markerList[i], 'click', getClickHandler(i));
-            }
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
 
-            // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
-            function ClickMap(i){
-                return function(){
-                    var infowindow = infowindowList[i];
-                    infowindow.close();
-                }
-            }
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
 
-            // marker를 클릭했을 때 infowindow를 열고 닫을 수 있도록 하는 함수
-            function getClickHandler(i){
-                return function(){
-                    var marker = markerList[i];
-                    var infowindow = infowindowList[i];
-                    if(infowindow.getMap()){
-                        infowindow.close();
-                    }
-                    else{
-                        infowindow.open(map, marker);
-                    }
-                }
-            }
-        </script>
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+  </script>
     </div>
 </body>
 </html>
