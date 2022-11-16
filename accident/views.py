@@ -4,6 +4,8 @@ from .models import AccidentGraph, AccidentLocal
 # Create your views here.
 def accident_view(request):
     accidentview = AccidentGraph.objects.all()
-    accidentlocal = AccidentLocal.objects.all()
-    return render(request,"chart_index.html", {"accidentview": accidentview, "accidentlocal": accidentlocal})
+    return render(request,"piechart_year.html", {"accidentview": accidentview})
 
+def accident_local(request):
+    accidentlocal = AccidentLocal.objects.all()
+    return render(request, "barchart_local.html", {"accidentlocal": accidentlocal})
