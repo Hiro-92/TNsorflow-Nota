@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style01.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
         .infowindow_wrap {
           position: absolute;
@@ -55,10 +57,45 @@
     <div class="right">
     <!--    이 아래를 수정하시면 됩니당    -->
         <div id="navbar">MyfirstMap</div>
+        <div id="infoBox">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_15" value="2015" id="2015">
+                <label class="form-check-label">2015</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_16" value="2016" id="2016">
+                <label class="form-check-label">2016</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_17" value="2017" id="2017">
+                <label class="form-check-label" >2017</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_18" value="2018" id="2018">
+                <label class="form-check-label">2018</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_19" value="2019" id="2019">
+                <label class="form-check-label">2019</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_20" value="2020" id="2020">
+                <label class="form-check-label">2020</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="year_21" value="2021" id="2021">
+                <label class="form-check-label">2021</label>
+            </div>
+        </div>
 
   <div id="map" style="width:100%;height:100vh;"></div>
-
-  <script type="text/javascript" src="data_15.js"></script>
+  <script src="data_15.js"></script>
+  <script src="data_16.js"></script>
+  <script src="data_17.js"></script>
+  <script src="data_18.js"></script>
+  <script src="data_19.js"></script>
+  <script src="data_20.js"></script>
+  <script src="data_21.js"></script>
   <script>
   <!-- 지도 중심 위치 띄우기 및 zoom 정도 변경 -->
   var mapOptions = {
@@ -73,8 +110,17 @@
   var infowindowList =[];
 
   // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
-  for (var i in data) {
-    var target = data[i];
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_15]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_15) {
+    var target = data_15[i];
     // data.js 안의 위도, 경도 값을 받아 마커 띄우기
     var latlng = new naver.maps.LatLng(target.lat, target.lng);
     marker = new naver.maps.Marker({
@@ -133,6 +179,495 @@
           }
       }
   }
+
+            } else{
+                for (var i in data_15){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_16]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_16) {
+    var target = data_16[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_location'>${target.location}</div>
+                        <div class='infowindow_date'>${target.date}</div>
+                        <div class='infowindow_type'>${target.type}</div>
+                        <div class='infowindow_dead'>${target.dead}</div>
+                        <div class='infowindow_hurt'>${target.hurt}</div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+
+            } else{
+                for (var i in data_16){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_17]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_17) {
+    var target = data_17[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_location'>${target.location}</div>
+                        <div class='infowindow_date'>${target.date}</div>
+                        <div class='infowindow_type'>${target.type}</div>
+                        <div class='infowindow_dead'>${target.dead}</div>
+                        <div class='infowindow_hurt'>${target.hurt}</div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+
+            } else{
+                for (var i in data_17){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_18]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_18) {
+    var target = data_18[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_location'>${target.location}</div>
+                        <div class='infowindow_date'>${target.date}</div>
+                        <div class='infowindow_type'>${target.type}</div>
+                        <div class='infowindow_dead'>${target.dead}</div>
+                        <div class='infowindow_hurt'>${target.hurt}</div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+
+            } else{
+                for (var i in data_18){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_19]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_19) {
+    var target = data_19[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_location'>${target.location}</div>
+                        <div class='infowindow_date'>${target.date}</div>
+                        <div class='infowindow_type'>${target.type}</div>
+                        <div class='infowindow_dead'>${target.dead}</div>
+                        <div class='infowindow_hurt'>${target.hurt}</div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+
+            } else{
+                for (var i in data_19){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_20]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_20) {
+    var target = data_20[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_location'>${target.location}</div>
+                        <div class='infowindow_date'>${target.date}</div>
+                        <div class='infowindow_type'>${target.type}</div>
+                        <div class='infowindow_dead'>${target.dead}</div>
+                        <div class='infowindow_hurt'>${target.hurt}</div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+
+            } else{
+                for (var i in data_20){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
+
+  // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=year_21]');
+
+    for (var checkbox of checkboxes)
+    {
+        checkbox.addEventListener('change', function(event)
+        {
+            if (event.target.checked) {
+                // for문 안에서 data.js 안에 있는 데이터를 받아와 마커 위치 지정
+  for (var i in data_21) {
+    var target = data_21[i];
+    // data.js 안의 위도, 경도 값을 받아 마커 띄우기
+    var latlng = new naver.maps.LatLng(target.lat, target.lng);
+    marker = new naver.maps.Marker({
+      map: map,
+      position: latlng,
+    });
+
+    // infowindow에 들어갈 내용 div태그 안에 넣어서 지정하기
+    var content = `<div class='infowindow_wrap'>
+                        <div class='infowindow_location'>${target.location}</div>
+                        <div class='infowindow_date'>${target.date}</div>
+                        <div class='infowindow_type'>${target.type}</div>
+                        <div class='infowindow_dead'>${target.dead}</div>
+                        <div class='infowindow_hurt'>${target.hurt}</div>
+                </div>`
+
+    // infowindow 띄우기
+    var infowindow = new naver.maps.InfoWindow({
+        content: content,
+        backgroundColor: "#00ff0000",
+        borderColor: "#00ff0000",
+        anchorSize: new naver.maps.Size(0,0)
+    })
+
+    // for문을 통해 생성된 marker와 infowindow list 안에 집어넣기
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+  }
+
+  // marker를 클릭하면 infowindow가 열리고 닫히는 코드 작성
+  for (var i=0, ii=markerList.length; i<ii;i++){
+      // 마커가 아닌 지도 부분을 클릭해도 infowindow 닫기
+      naver.maps.Event.addListener(map, 'click', ClickMap(i));
+      // infowindow가 띄워져있을 때 marker 누르면 닫고
+      // infowindow가 안띄워져있을 때 marker 누르면 열기
+      naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+  }
+
+  // map(지도) 부분을 클릭했을 때 infowindow를 닫는 함수
+  function ClickMap(i){
+      return function(){
+          var infowindow = infowindowList[i];
+          infowindow.close();
+      }
+  }
+
+  // marker를 클릭했을 때 infowindow를 열고 닫고 할 수 있는 함수
+  function getClickHandler(i){
+      return function(){
+          var marker = markerList[i];
+          var infowindow = infowindowList[i];
+          if(infowindow.getMap()) {
+              infowindow.close();
+          } else{
+              infowindow.open(map, marker);
+          }
+      }
+  }
+
+            } else{
+                for (var i in data_21){
+                    markerList[i].setMap(null);
+                }
+            }
+        });
+    }
+}, false);
   </script>
     </div>
 </body>
